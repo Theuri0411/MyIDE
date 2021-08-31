@@ -2,7 +2,6 @@ from tkinter import *
 
 compiler = Tk()
 compiler.title("MyIDE")
-
 menubar = Menu(compiler)
 
 runbar = Menu(menubar, tearoff=0)

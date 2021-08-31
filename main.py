@@ -5,7 +5,7 @@ compiler.title("MyIDE")
 
 menubar = Menu(compiler)
 
-runbar = Menu(menubar)
+runbar = Menu(menubar, tearoff=0)
 runbar.add_command(label="Run")
 menubar.add_cascade(label = "Run", menu=runbar)
 compiler.config(menu=menubar)

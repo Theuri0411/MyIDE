@@ -1,4 +1,3 @@
-from os import error
 from tkinter import *
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 import subprocess
@@ -33,6 +32,11 @@ def save_as():
 
 
 def run():
+    if file_path == "":
+        save_prompt = Toplevel()
+        text = Label(save_prompt, text="Please Save Code")
+        text.pack()
+        return
     command = f"python {file_path}"
     process = subprocess.Popen(
         command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)

@@ -2,6 +2,12 @@ from tkinter import *
 from tkinter.filedialog import askopenfilename, asksaveasfilename
 compiler = Tk()
 compiler.title("My_IDE")
+file_path = ""
+
+
+def set_file_path(path):
+    global file_path
+    file_path = path
 
 
 def open_file():
@@ -10,13 +16,18 @@ def open_file():
         code = file.read()
         editor.delete("1.0", END)
         editor.insert("1.0", code)
+        set_file_path(path)
 
 
 def save_as():
-    path = asksaveasfilename(filetypes=[("python Files", "*.py")])
+    if file_path == "":
+        path = asksaveasfilename(filetypes=[("python Files", "*.py")])
+    else:
+        path = file_path
     with open(path, "W") as file:
         code = editor.get("1.0", END)
         file.write(code)
+        set_file_path(path)
 
 
 def run():

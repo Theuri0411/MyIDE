@@ -5,7 +5,8 @@ compiler.title("MyIDE")
 
 
 def run():
-    print("Code will be run")
+    code = editor.get("1.0", END)
+    exec(code)
 
 
 menubar = Menu(compiler)

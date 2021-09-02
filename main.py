@@ -1,7 +1,15 @@
 from tkinter import *
-from tkinter.filedialog import asksaveasfilename
+from tkinter.filedialog import askopenfilename, asksaveasfilename
 compiler = Tk()
 compiler.title("My_IDE")
+
+
+def open_file():
+    path = askopenfilename(filetypes=[("python Files", "*.py")])
+    with open(path, "r") as file:
+        code = file.read()
+        editor.delete("1.0", END)
+        editor.insert("1.0", code)
 
 
 def save_as():
@@ -18,7 +26,7 @@ def run():
 
 menubar = Menu(compiler)
 file_menu = Menu(menubar, tearoff=0)
-file_menu.add_command(label="Open", command=run)
+file_menu.add_command(label="Open", command=open_file)
 file_menu.add_command(label="Save", command=run)
 file_menu.add_command(label="Save AS", command=save_as)
 file_menu.add_command(label="Exit", command=exit)
